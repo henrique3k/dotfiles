@@ -1,0 +1,61 @@
+conky.config={
+alignment = 'top_right',
+background = true,
+border_width = 1,
+cpu_avg_samples = 2,
+default_color = '#3f3f3f',
+default_outline_color = '#3f3f3f',
+draw_borders = false,
+draw_graph_borders = true,
+draw_outline = false,
+draw_shades = false,
+use_xft = true,
+font = 'Sans Mono:size=09',
+gap_x = 5,
+gap_y = 5,
+minimum_width = 1910,
+maximum_width = 1910,
+net_avg_samples = 2,
+out_to_console = false,
+out_to_stderr = false,
+extra_newline = false,
+own_window = true,
+own_window_class = Conky,
+own_window_type = 'panel',
+own_window_colour = '6f6f6f',
+own_window_transparent = false,
+own_window_argb_visual = true,
+own_window_argb_value = 200,
+own_window_hints = 'undecorated,above,sticky,skip_taskbar,skip_pager',
+stippled_borders = 0,
+update_interval = 1,
+uppercase = false, 
+use_spacer = 'right',
+show_graph_scale = false,
+show_graph_range = false,
+format_human_readable = true,
+double_buffer = true,
+if_up_strictness = 'address',
+color1 = '#000000',
+color2 = '888888',
+color3 = '444444',
+color4 = 'FFFFFF'
+}
+
+conky.text = [[
+${color1}${time %a, %d %b %H:%M:%S} \
+${alignc}${color4}Uptime:${color1}${uptime}\
+${color4}Loadavg: ${color1} ${loadavg} \
+${color4}CPU: ${color1} ${cpu}% ${cpubar cpu0 5,50} \
+${color4}RAM:${color1} ${memperc}% ${membar 5,50}  \
+${color4}SWAP:${color1} ${swapperc}% ${swapbar 5,50} \
+${color4}Usage Space /:${color1} ${fs_used_perc /}% \
+${color4}/home:${color1} ${fs_used_perc /home}%  \
+${if_up enp2s0} ${color4}enp2s0 [${color1}${addrs enp2s0}${color4}] ${color4}Up:${color1} ${upspeed enp2s0} ${color4}Down:${color1} ${downspeed enp2s0}${endif} \
+${if_up wlp3s0} ${color4}wlp3s0 [${color1}${addrs wlp3s0}${color4}] ${color4}Up:${color1} ${upspeed wlp3s0} ${color4}Down:${color1} ${downspeed wlp3s0}${endif} \
+${alignr}${color4}Temp: ${color1}${i8k_cpu_temp}Cº \
+${alignr}${color4}Freq: ${color1}${freq_g}GHz \
+${alignr}${color5}Fan: ${color1}${exec sensors | grep fan | awk '{print $2}'} \
+${alignr}${color4}Battery: ${color1}${battery_percent BAT0}%  \
+${alignr}${color4}Kernel: ${color1}${kernel version}
+]]
